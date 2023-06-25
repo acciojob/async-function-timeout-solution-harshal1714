@@ -5,10 +5,16 @@ const output = document.getElementById("output");
 
 //your code here
 async function showMessage() {
-  const message = text.value;
-  const delayVal = delay.value;
-  await new Promise((resolve) => setTimeout(resolve, delayVal));
-  output.innerText = message;
+  // Get the message and delay from the input fields
+  const message = textInput.value;
+  const delay = delayInput.value * 1000; // Convert delay to milliseconds
+
+  // Wait for the specified delay using await
+  await new Promise(resolve => setTimeout(resolve, delay));
+
+  // Display the message on the webpage
+  outputDiv.textContent = message;
 }
 
-btn.addEventListener("click", showMessage);
+// Event listener for the button click
+btn.addEventListener('click', showMessage);
