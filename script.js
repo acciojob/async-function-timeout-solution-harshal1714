@@ -1,20 +1,12 @@
-const text = document.getElementById("text");
-const delay = document.getElementById("delay");
-const btn = document.getElementById("btn");
-const output = document.getElementById("output");
+const url = "https://jsonplaceholder.typicode.com/posts/1";
+const btn = document.querySelector('#btn');
+const output = document.querySelector('#output');
 
-//your code here
-async function showMessage() {
-  // Get the message and delay from the input fields
-  const message = textInput.value;
-  const delay = delayInput.value * 1000; // Convert delay to milliseconds
 
-  // Wait for the specified delay using await
-  await new Promise(resolve => setTimeout(resolve, delay));
-
-  // Display the message on the webpage
-  outputDiv.textContent = message;
+const fetchData = async() => {
+	const res = await fetch(url);
+	const data = await res.json();
+	output.innerText = data.title;
 }
 
-// Event listener for the button click
-btn.addEventListener('click', showMessage);
+btn.addEventListener('click', fetchData);
